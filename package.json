@@ -6,8 +6,9 @@
   "author": "Simon Samuel <salviensky@gmail.com>",
   "license": "MIT",
   "dependencies": {
+    "@aave/protocol-js": "^4.3.0",
     "alchemy-sdk": "^2.0.5-rc1",
-    "axios": "^0.27.2",
+    "axios": "^1.0.0",
     "dotenv": "^16.0.2",
     "hardhat": "^2.11.2"
   },

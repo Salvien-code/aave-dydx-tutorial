@@ -1,8 +1,11 @@
 import { Network, Alchemy } from "alchemy-sdk";
 import axios from "axios";
 import "dotenv/config";
+import { ethers } from "ethers";
 
-const { ALCHEMY_API_KEY, AAVE_STAGING_URL } = process.env;
+const { ALCHEMY_API_KEY, PRIVATE_KEY } = process.env;
+
+const wallet = new ethers.Wallet(PRIVATE_KEY!);
 
 // Alchemy Settings
 const settings = {
@@ -11,19 +14,13 @@ const settings = {
 };
 
 const alchemyInstance = new Alchemy(settings);
-
-export const axiosInstance = axios.create({
-  baseURL: AAVE_STAGING_URL,
-  responseType: "json",
-  headers: {
-    "Content-Type": "application/json",
-  },
-});
+const alchemyProvider = new ethers.providers.AlchemyProvider("Goerli");
 
 // Exported config
 const config = {
+  wallet,
   alchemyInstance,
-  axiosInstance,
+  alchemyProvider,
 };
 
-export { config };
+export default config;

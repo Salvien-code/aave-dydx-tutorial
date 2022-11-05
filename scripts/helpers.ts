@@ -1,11 +1,12 @@
-import { config } from "../config";
-const { alchemyInstance, axiosInstance } = config;
+import config from "../config";
+const { alchemyInstance } = config;
 
-export async function getAddressTokens(
+export async function getTokens(
   walletAddress: string,
   tokenAddresses: string[]
 ) {
   if (tokenAddresses.length > 0) {
+    console.log(`Fetching balances of token(s) ${tokenAddresses}`);
     const tokens = await alchemyInstance.core.getTokenBalances(
       walletAddress,
       tokenAddresses
@@ -20,19 +21,18 @@ export async function getAddressTokens(
     });
 
     // This is a pretty ugly log statement, I'm aware :-)
-    // Prints out your LINK token balance (if any) in a more readable way.
+    // Prints out the token balance (if any) of the first token passed into tokenAddresses[]
+    // in a more readable way.
     console.dir(
       `${
         testToken
           ? `You own ${testToken.tokenBalance} or ${
               parseInt(testToken.tokenBalance!) / 10 ** 18
-            } LINK}`
-          : "You don't have any LINK tokens in your account"
+            } of the requested token}\n`
+          : "You don't own the requested tokens in your account\n"
       }`
     );
+
+    return tokens;
   } else throw new Error("No token addresses were passed in the function");
 }
-
-// Borrow Assets from AAVE
-
-// Repay Assets to AAVE

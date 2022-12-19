@@ -1,0 +1,7 @@
+export const WALLET_ADDRESS = "0x8250E129B1391db8D2Db8b0Aef217FA3EC638aA4";
+
+// The contract addresses on the Goerli chain
+export const ADDRESSES = {
+  aWETH: "0x27B4692C93959048833f40702b22FE3578E77759",
+  aLINK: "0x6A639d29454287B3cBB632Aa9f93bfB89E3fd18f",
+};

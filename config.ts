@@ -1,5 +1,4 @@
 import { Network, Alchemy } from "alchemy-sdk";
-import axios from "axios";
 import "dotenv/config";
 import { ethers } from "ethers";
 
